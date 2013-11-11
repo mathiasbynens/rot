@@ -1,0 +1,22 @@
+{
+	"name": "rot",
+	"version": "0.1.0",
+	"description": "Perform simple rotational letter substitution (such as ROT-13) in JavaScript.",
+	"repo": "mathiasbynens/rot",
+	"license": "MIT",
+	"scripts": [
+		"rot.js"
+	],
+	"main": "rot.js",
+	"keywords": [
+		"string",
+		"rot",
+		"rot13",
+		"rot-13",
+		"caesar",
+		"cipher",
+		"crypto",
+		"encode",
+		"decode"
+	]
+}

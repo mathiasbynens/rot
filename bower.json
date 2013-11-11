@@ -1,0 +1,16 @@
+{
+	"name": "rot",
+	"version": "0.1.0",
+	"main": "rot.js",
+	"ignore": [
+		"bin",
+		"coverage",
+		"man",
+		"tests",
+		".*",
+		"component.json",
+		"Gruntfile.js",
+		"node_modules",
+		"package.json"
+	]
+}

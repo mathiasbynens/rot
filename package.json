@@ -1,0 +1,60 @@
+{
+	"name": "rot",
+	"version": "0.1.0",
+	"description": "Perform simple rotational letter substitution (such as ROT-13) in JavaScript.",
+	"homepage": "http://mths.be/rot",
+	"main": "rot.js",
+	"bin": "bin/rot",
+	"man": "man/rot.1",
+	"keywords": [
+		"string",
+		"rot",
+		"rot13",
+		"rot-13",
+		"caesar",
+		"cipher",
+		"crypto",
+		"encode",
+		"decode"
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://mths.be/mit"
+		}
+	],
+	"author": {
+		"name": "Mathias Bynens",
+		"url": "http://mathiasbynens.be/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mathiasbynens/rot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/mathiasbynens/rot/issues"
+	},
+	"files": [
+		"LICENSE-MIT.txt",
+		"rot.js",
+		"bin/",
+		"man/"
+	],
+	"directories": {
+		"bin": "bin",
+		"man": "man",
+		"test": "tests"
+	},
+	"scripts": {
+		"test": "node tests/tests.js"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-shell": "~0.5.0",
+		"istanbul": "~0.1.44",
+		"qunit-clib": "~1.3.0",
+		"qunitjs": "~1.11.0",
+		"requirejs": "~2.1.9"
+	}
+}

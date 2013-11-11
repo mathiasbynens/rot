@@ -1,0 +1,111 @@
+#!/usr/bin/env node
+(function() {
+
+	var fs = require('fs');
+	var rot = require('../rot.js');
+	var strings = process.argv.splice(2);
+	var stdin = process.stdin;
+	var data;
+	var timeout;
+	var n;
+	var options = {};
+	var log = console.log;
+
+	var main = function() {
+		var option = strings[0];
+		var count = 0;
+
+		if (/^(?:-h|--help|undefined)$/.test(option)) {
+			log(
+				'rot v%s - http://mths.be/rot',
+				rot.version
+			);
+			log([
+				'\nUsage:\n',
+				'\trot [-n positions] string',
+				'\trot [-v | --version]',
+				'\trot [-h | --help]',
+				'\nExamples:\n',
+				'\trot -n 13 \'foo bar\'',
+				'\techo \'baz qux\' | rot -n 21'
+			].join('\n'));
+			return process.exit(1);
+		}
+
+		if (/^(?:-v|--version)$/.test(option)) {
+			log('v%s', rot.version);
+			return process.exit(1);
+		}
+
+		var length = strings.length;
+		var index = -1;
+		var string;
+		while (++index < length) {
+			string = strings[index];
+			// Process options
+			if (/^-n/.test(string)) {
+				if (string.length > 2) {
+					n = Number(string.slice(2));
+				} else {
+					n = Number(strings[++index]);
+				}
+				continue;
+			}
+			// Process string(s)
+			var result;
+			try {
+				result = rot(string, n);
+				log(result);
+				count++;
+			} catch(error) {
+				log(error.message + '\n');
+				log('Error: failed to encrypt.');
+				log('If you think this is a bug in rot, please report it:');
+				log('https://github.com/mathiasbynens/rot/issues/new');
+				log(
+					'\nStack trace using rot@%s:\n',
+					rot.version
+				);
+				log(error.stack);
+				return process.exit(1);
+			}
+		}
+		if (!count) {
+			log('Error: rot requires a string argument.');
+			log('Try `rot --help` for more information.');
+			return process.exit(1);
+		}
+		// Return with exit status 0 outside of the `forEach` loop, in case
+		// multiple strings were passed in.
+		return process.exit(0);
+	};
+
+	if (stdin.isTTY) {
+		// handle shell arguments
+		main();
+	} else {
+		// Either the script is called from within a non-TTY context, or `stdin`
+		// content is being piped in.
+		if (!process.stdout.isTTY) {
+			// The script was called from a non-TTY context. This is a rather uncommon
+			// use case we don’t actively support. However, we don’t want the script
+			// to wait forever in such cases, so…
+			timeout = setTimeout(function() {
+				// …if no piped data arrived after a whole minute, handle shell
+				// arguments instead.
+				main();
+			}, 60000);
+		}
+		data = '';
+		stdin.on('data', function(chunk) {
+			clearTimeout(timeout);
+			data += chunk;
+		});
+		stdin.on('end', function() {
+			strings.push(data.trim());
+			main();
+		});
+		stdin.resume();
+	}
+
+}());
