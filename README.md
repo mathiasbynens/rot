@@ -1,4 +1,4 @@
-# rot [![Build status](https://travis-ci.org/mathiasbynens/rot.png?branch=master)](https://travis-ci.org/mathiasbynens/rot) [![Dependency status](https://gemnasium.com/mathiasbynens/rot.png)](https://gemnasium.com/mathiasbynens/rot)
+# rot [![Build status](https://travis-ci.org/mathiasbynens/rot.svg?branch=master)](https://travis-ci.org/mathiasbynens/rot) [![Dependency status](https://gemnasium.com/mathiasbynens/rot.svg)](https://gemnasium.com/mathiasbynens/rot)
 
 _rot_ is a JavaScript library that performs rotational letter substitution. It can be used to shift any ASCII letters in the input string by a given number of positions in the alphabet. To ROT-13 the string `'abc'`, for example:
 
@@ -137,7 +137,7 @@ To generate the code coverage report, use `grunt cover`.
 
 ## Author
 
-| [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias "Follow @mathias on Twitter") |
+| [![twitter/mathias](https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](https://twitter.com/mathias "Follow @mathias on Twitter") |
 |---|
 | [Mathias Bynens](http://mathiasbynens.be/) |
 
