@@ -1,45 +1,34 @@
-;(function(root) {
+(function(root) {
 	'use strict';
 
-	/** Use a single `load` function */
-	var load = typeof require == 'function' ? require : root.load;
+	var noop = Function.prototype;
 
-	/** The unit testing framework */
+	var load = (typeof require == 'function' && !(root.define && define.amd)) ?
+		require :
+		(!root.document && root.java && root.load) || noop;
+
 	var QUnit = (function() {
-		var noop = Function.prototype;
 		return root.QUnit || (
 			root.addEventListener || (root.addEventListener = noop),
 			root.setTimeout || (root.setTimeout = noop),
 			root.QUnit = load('../node_modules/qunitjs/qunit/qunit.js') || root.QUnit,
-			(load('../node_modules/qunit-clib/qunit-clib.js') || { 'runInContext': noop }).runInContext(root),
 			addEventListener === noop && delete root.addEventListener,
 			root.QUnit
 		);
 	}());
 
-	/** The `rot` object to test */
+	var qe = load('../node_modules/qunit-extras/qunit-extras.js');
+	if (qe) {
+		qe.runInContext(root);
+	}
+
+	// The `rot` object to test
 	var rot = root.rot || (root.rot = (
 		rot = load('../rot.js') || root.rot,
 		rot = rot.rot || rot
 	));
 
 	/*--------------------------------------------------------------------------*/
-
-	function forEach(array, fn) {
-		var index = -1;
-		var length = array.length;
-		while (++index < length) {
-			fn(array[index]);
-		}
-	}
-
-	function forOwn(object, fn) {
-		for (var key in object) {
-			if (object.hasOwnProperty(key)) {
-				fn(key, object[key]);
-			}
-		}
-	}
 
 	// `throws` is a reserved word in ES3; alias it to avoid errors
 	var raises = QUnit.assert['throws'];

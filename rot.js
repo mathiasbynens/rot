@@ -74,9 +74,7 @@
 		if (freeModule) { // in Node.js or RingoJS v0.8.0+
 			freeModule.exports = rot;
 		} else { // in Narwhal or RingoJS v0.7.0-
-			for (var key in rot) {
-				rot.hasOwnProperty(key) && (freeExports[key] = rot[key]);
-			}
+			freeExports.rot = rot;
 		}
 	} else { // in Rhino or a web browser
 		root.rot = rot;
