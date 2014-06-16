@@ -2,6 +2,16 @@
 
 _rot_ is a JavaScript library that performs rotational letter substitution. It can be used to shift any ASCII letters in the input string by a given number of positions in the alphabet. To ROT-13 the string `'abc'`, for example:
 
+```js
+// ROT-13 is the default
+rot('abc');
+// → 'nop'
+
+// Or, specify `13` explicitly:
+rot('abc', 13);
+// → 'nop'
+```
+
 ## Installation
 
 Via [npm](http://npmjs.org/):
