@@ -2,7 +2,7 @@
 	"name": "rot",
 	"version": "0.1.0",
 	"description": "Perform simple rotational letter substitution (such as ROT-13) in JavaScript.",
-	"homepage": "http://mths.be/rot",
+	"homepage": "https://mths.be/rot",
 	"main": "rot.js",
 	"bin": "bin/rot",
 	"man": "man/rot.1",
@@ -17,23 +17,16 @@
 		"encode",
 		"decode"
 	],
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "http://mths.be/mit"
-		}
-	],
+	"license": "MIT",
 	"author": {
 		"name": "Mathias Bynens",
-		"url": "http://mathiasbynens.be/"
+		"url": "https://mathiasbynens.be/"
 	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mathiasbynens/rot.git"
 	},
-	"bugs": {
-		"url": "https://github.com/mathiasbynens/rot/issues"
-	},
+	"bugs": "https://github.com/mathiasbynens/rot/issues",
 	"files": [
 		"LICENSE-MIT.txt",
 		"rot.js",
