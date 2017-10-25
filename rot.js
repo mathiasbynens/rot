@@ -23,6 +23,7 @@
 	var regexUppercase = /[A-Z]/;
 
 	var rot = function(string, n) {
+		if (!string) return string
 		if (n == null) {
 			// use ROT-13 by default
 			n = 13;
